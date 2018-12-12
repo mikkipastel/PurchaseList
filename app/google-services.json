@@ -23,6 +23,14 @@
           }
         },
         {
+          "client_id": "359682036740-qqadpkvk63f8jfler7dvt414vj4mtte0.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.disc55.purchaselist",
+            "certificate_hash": "fcfed8d646832ef6bade48eba14fea0cdc36f343"
+          }
+        },
+        {
           "client_id": "359682036740-ovl67mi74im6ah8glkjo3jnei83mu0n2.apps.googleusercontent.com",
           "client_type": 3
         }
