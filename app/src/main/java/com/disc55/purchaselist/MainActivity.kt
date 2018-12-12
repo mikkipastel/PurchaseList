@@ -15,7 +15,7 @@ public class MainActivity : AppCompatActivity() {
     //https://www.youtube.com/watch?v=yKSuB5COWL4
     lateinit var db: DocumentReference
 
-
+    
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
