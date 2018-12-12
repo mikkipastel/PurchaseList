@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent">
+<!--
+    <TextView
+        android:text="ชื่อสินค้า"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" android:id="@+id/itemname_txt"/>
+    <EditText
+        android:text="ชื่อสินค้า"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" android:id="@+id/itemname_edit_txt"/>
+    <TextView
+        android:text="จำนวน"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" android:id="@+id/quantity_txt"/>
+    <EditText
+        android:text="จำนวน"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" android:id="@+id/quantity_edit_txt"/>
+    <TextView
+        android:text="สถานที่"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" android:id="@+id/location_txt"/>
+    <EditText
+        android:text="สถานที่"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" android:id="@+id/location_edit_txt"/>
+
+    <Button
+        android:id="@+id/add_purchase_item_btn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/save"
+        android:onClick="SaveNote"
+    />
+-->
+
+</LinearLayout>
