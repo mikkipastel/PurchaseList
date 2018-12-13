@@ -21,9 +21,19 @@ public class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
 
-        //db = FirebaseFirestore.getInstance().document("user2/location") //edit database under this path
-        db = FirebaseFirestore.getInstance().document("Users/Disc") //edit database under this path
+        // Show fragment add purchase item
+       val Change = findViewById<Button>(R.id.purchase_fragment_btn)
+        Change.setOnClickListener({
+            val transaction = supportFragmentManager.beginTransaction()
+            val fragment = PurchaseFragment()
+            transaction.replace(R.id.container,fragment)
+            transaction.addToBackStack(null)
+            transaction.commit()
+        })
 
+
+        // Save data into Cloud Firestore
+        db = FirebaseFirestore.getInstance().document("Users/Disc") //edit database under this path
         val save = findViewById<View>(R.id.add_purchase_item_btn) as Button
         save.setOnClickListener {
                 view: View? -> save()
