@@ -5,7 +5,7 @@
               android:layout_height="match_parent">
 
     <EditText
-        android:id="@+id/itemname_edit_txt"
+        android:id="@+id/edittextItemName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Item name (Text)"
@@ -14,7 +14,7 @@
     />
 
     <EditText
-        android:id="@+id/quantity_edit_txt"
+        android:id="@+id/edittextQuantity"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Quantity (Number)"
@@ -23,7 +23,7 @@
     />
 
     <EditText
-        android:id="@+id/unit_edit_txt"
+        android:id="@+id/edittextUnit"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Unit (Text)"
@@ -32,7 +32,7 @@
     />
 
     <EditText
-        android:id="@+id/requiredate_edit_txt"
+        android:id="@+id/edittextRequireDate"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Require Date (Date)"
@@ -41,7 +41,7 @@
     />
 
     <EditText
-        android:id="@+id/location_edit_txt"
+        android:id="@+id/edittextLocation"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Location name (Text)"

@@ -10,72 +10,13 @@
 
     <!-- Call add new purchase fragment -->
     <Button
-        android:id="@+id/purchase_fragment_btn"
+        android:id="@+id/btnPurchaseFragment"
         android:text="Add new purchase"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="16dp"
         android:textAllCaps="false"
     />
-
-
-
-    <!-- These code only for testing fragment_add_purchase_item.xml -->
-    <!--
-    <EditText
-        android:id="@+id/itemname_edit_txt"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Item name (Text)"
-        android:inputType="text"
-        android:autofillHints=""
-    />
-
-    <EditText
-        android:id="@+id/quantity_edit_txt"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Quantity (Number)"
-        android:inputType="number"
-        android:autofillHints=""
-    />
-
-        <EditText
-            android:id="@+id/unit_edit_txt"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Unit (Text)"
-            android:inputType="text"
-            android:autofillHints=""
-        />
-
-        <EditText
-            android:id="@+id/requiredate_edit_txt"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Require Date (Date)"
-            android:inputType="date"
-            android:autofillHints=""
-        />
-
-        <EditText
-            android:id="@+id/location_edit_txt"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Location name (Text)"
-            android:inputType="text"
-            android:autofillHints=""
-        />
-    -->
-    <!-- I cannot delete these code -->
-    <Button
-        android:id="@+id/add_purchase_item_btn"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Aw Ork Mai Dai Tum Ngai Dee"
-
-    />
-
 
     <!-- Fragment Layout Container -->
     <FrameLayout
