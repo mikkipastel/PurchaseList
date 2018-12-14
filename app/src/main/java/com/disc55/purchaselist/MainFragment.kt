@@ -9,17 +9,13 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.disc55.purchaselist.adapter.PurchaseListAdapter
 import com.disc55.purchaselist.adapter.PurchaseListListener
+import com.disc55.purchaselist.model.Purchase
 import com.google.firebase.Timestamp
 import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.android.synthetic.main.fragment_main.*
 import java.util.*
 
 class MainFragment: Fragment(), PurchaseListListener {
-
-    private val textCollectionItemName = "itemName"
-    private val textCollectionQuantity = "quantity"
-    private val textCollectionUnit = "unit"
-    private val textCollectionStatus = "status"
 
     private lateinit var mFirestore: FirebaseFirestore
     private var item = arrayListOf<Purchase>()
@@ -56,14 +52,16 @@ class MainFragment: Fragment(), PurchaseListListener {
             .get()
             .addOnSuccessListener { result ->
                 for (document in result) {
-                    item.add(Purchase(
-                        document.data[textCollectionItemName].toString(),
-                        document.data[textCollectionQuantity].toString().toFloat(),
-                        document.data[textCollectionUnit].toString(),
-                        document.data[textCollectionStatus].toString().toInt(),
-                        Timestamp(Date()),
-                        Timestamp(Date())
-                    ))
+                    item.add(
+                        Purchase(
+                            document.data[Constant().textCollectionItemName].toString(),
+                            document.data[Constant().textCollectionQuantity].toString().toFloat(),
+                            document.data[Constant().textCollectionUnit].toString(),
+                            document.data[Constant().textCollectionStatus].toString().toInt(),
+                            Timestamp(Date()),
+                            Timestamp(Date())
+                        )
+                    )
                 }
             }
             .addOnFailureListener { exception ->

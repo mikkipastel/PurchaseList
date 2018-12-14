@@ -41,19 +41,18 @@ class PurchaseFragment : Fragment() {
         val itemName = edittextItemName.text.toString().trim()
         val quantity = edittextQuantity.text.toString().trim()
         val unit = edittextUnit.text.toString().trim()
-        val requireDate = Timestamp(Date()) //edittextRequireDate.text.toString().trim()
-        val location = "BigC" //edittextLocation.text.toString().trim()
+        val requireDate = Timestamp(Date())
+        val location = "BigC"
 
-        if( (!itemName.isEmpty()) && (!quantity.isEmpty()) && (!unit.isEmpty())  && (!location.isEmpty()) ){  //&& (!requireDate.isEmpty())
+        if ((!itemName.isEmpty()) && (!quantity.isEmpty()) && (!unit.isEmpty())  && (!location.isEmpty())) {
             try {
-                Toast.makeText(context,"OK", Toast.LENGTH_SHORT).show()
                 val items = HashMap<String, Any>()
-                items["itemName"] = itemName
-                items["quantity"] = quantity
-                items["unit"] = unit
-                items["requireDate"] = requireDate
-                items["status"] = 0
-                items["closeDate"] = ""
+                items[Constant().textCollectionItemName] = itemName
+                items[Constant().textCollectionQuantity] = quantity
+                items[Constant().textCollectionUnit] = unit
+                items[Constant().textCollectionRequireDate] = requireDate
+                items[Constant().textCollectionStatus] = 0
+                items[Constant().textCollectionCloseDate] = ""
 
                 //generate auto ID of item for every items in the collection
                 val reference = database.collection("Locations").document(location).collection("Items")
@@ -69,9 +68,6 @@ class PurchaseFragment : Fragment() {
                     }
                 }
 
-                edittextItemName.text.clear()
-                edittextQuantity.text.clear()
-                edittextUnit.text.clear()
 
             } catch (e:Exception) {
                 Toast.makeText(context,e.toString(), Toast.LENGTH_LONG).show()

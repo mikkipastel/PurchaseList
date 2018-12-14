@@ -1,4 +1,4 @@
-package com.disc55.purchaselist
+package com.disc55.purchaselist.model
 
 import com.google.firebase.Timestamp
 

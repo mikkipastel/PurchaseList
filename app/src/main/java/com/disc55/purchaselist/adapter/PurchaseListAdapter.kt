@@ -4,7 +4,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.disc55.purchaselist.Purchase
+import com.disc55.purchaselist.model.Purchase
 import com.disc55.purchaselist.R
 import kotlinx.android.synthetic.main.item_purchase_list.view.*
 
