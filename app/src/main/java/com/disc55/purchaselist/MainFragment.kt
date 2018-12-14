@@ -46,6 +46,7 @@ class MainFragment: Fragment(), PurchaseListListener {
     }
 
     private fun setDataAdapter() {
+        item.clear()
         mFirestore.collection("Users").document("Disc")
             .collection("Locations").document("BigC")
             .collection("Items")
@@ -87,6 +88,7 @@ class MainFragment: Fragment(), PurchaseListListener {
         } else {
             mAdapter.changeStatusCloseToOpen(currentViewHolder)
         }
+        
     }
 
     override fun onItemRemoveClick(position: Int) {
