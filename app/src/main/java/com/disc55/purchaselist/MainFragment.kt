@@ -48,7 +48,7 @@ class MainFragment: Fragment(), PurchaseListListener {
     private fun setDataAdapter() {
         mFirestore.collection("Users").document("Disc")
             .collection("Locations").document("BigC")
-            .collection("Items").whereLessThanOrEqualTo("status",1)
+            .collection("Items")
             .get()
             .addOnSuccessListener { result ->
                 for (document in result) {
@@ -63,19 +63,19 @@ class MainFragment: Fragment(), PurchaseListListener {
                         )
                     )
                 }
+
+                mAdapter = PurchaseListAdapter(item, this)
+
+                recyclerView.apply {
+                    layoutManager = LinearLayoutManager(context, RecyclerView.VERTICAL, false)
+                    isNestedScrollingEnabled = true
+                    adapter = mAdapter
+                    onFlingListener = null
+                }
             }
             .addOnFailureListener { exception ->
                 textDisp.text = getString(R.string.failure_get_firestore, exception)
             }
-
-        val listAdapter = PurchaseListAdapter(item, this)
-
-        recyclerView.apply {
-            layoutManager = LinearLayoutManager(context, RecyclerView.VERTICAL, false)
-            isNestedScrollingEnabled = true
-            adapter = listAdapter
-            onFlingListener = null
-        }
     }
 
     override fun onItemDoneClick(position: Int, isClick: Boolean) {
