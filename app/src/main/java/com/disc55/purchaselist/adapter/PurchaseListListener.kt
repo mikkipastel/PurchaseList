@@ -1,6 +1,6 @@
 package com.disc55.purchaselist.adapter
 
 interface PurchaseListListener {
-    fun onItemDoneClick()
-    fun onItemRemoveClick()
+    fun onItemDoneClick(position: Int, isClick: Boolean)
+    fun onItemRemoveClick(position: Int)
 }

@@ -12,27 +12,45 @@ class PurchaseListAdapter(private val items: ArrayList<Purchase>,
                           private val listener: PurchaseListListener): RecyclerView.Adapter<PurchaseListAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        return ViewHolder(
-            LayoutInflater.from(parent.context).inflate(
-                R.layout.item_purchase_list,
-                parent,
-                false
-            )
-        )
+        return ViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.item_purchase_list, parent, false))
     }
 
     override fun getItemCount() = items.size
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.bind(items[position])
-        holder.itemView.checkbox.setOnClickListener { listener.onItemDoneClick() }
-        holder.itemView.imgClose.setOnClickListener { listener.onItemRemoveClick() }
+        holder.itemView.checkbox.setOnClickListener { listener.onItemDoneClick(position, holder.itemView.checkbox.isChecked) }
+        holder.itemView.imgClose.setOnClickListener { listener.onItemRemoveClick(position) }
     }
 
     class ViewHolder(itemsView: View): RecyclerView.ViewHolder(itemsView) {
         fun bind(item: Purchase) {
             itemView.textName.text = "${item.itemName} ${item.quantity} ${item.unit}"
+
+            if (item.status == 1) {
+                itemView.checkbox.isChecked = true
+                itemView.viewLine.visibility = View.VISIBLE
+            }
         }
+    }
+
+    fun changeStatusOpenToClose(holder: ViewHolder) {
+        holder.itemView.apply {
+            checkbox.isChecked = true
+            viewLine.visibility = View.VISIBLE
+        }
+    }
+
+    fun changeStatusCloseToOpen(holder: ViewHolder) {
+        holder.itemView.apply {
+            checkbox.isChecked = false
+            viewLine.visibility = View.GONE
+        }
+    }
+
+    fun changeStatusOpenToDelete(index: Int) {
+        items.removeAt(index)
+        notifyItemRemoved(index)
     }
 
 }
