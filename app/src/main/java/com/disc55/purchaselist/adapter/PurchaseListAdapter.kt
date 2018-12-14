@@ -19,8 +19,12 @@ class PurchaseListAdapter(private val items: ArrayList<Purchase>,
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.bind(items[position])
-        holder.itemView.checkbox.setOnClickListener { listener.onItemDoneClick(position, holder.itemView.checkbox.isChecked) }
-        holder.itemView.imgClose.setOnClickListener { listener.onItemRemoveClick(position) }
+        holder.itemView.checkbox.setOnClickListener {
+            listener.onItemDoneClick(position, holder.itemView.checkbox.isChecked)
+        }
+        holder.itemView.imgClose.setOnClickListener {
+            listener.onItemRemoveClick(position)
+        }
     }
 
     class ViewHolder(itemsView: View): RecyclerView.ViewHolder(itemsView) {
