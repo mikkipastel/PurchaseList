@@ -3,4 +3,10 @@
 
     <string name="header_purchase_list">Purchase List</string>
     <string name="save">Save</string>
+
+    <string name="hint_item_name">Item name (Text)</string>
+    <string name="hint_quantity">Quantity (Number)</string>
+    <string name="hint_unit">Unit (Text)</string>
+    <string name="hint_require_date">Require Date (Date)</string>
+    <string name="hint_location_name">Location name (Text)</string>
 </resources>

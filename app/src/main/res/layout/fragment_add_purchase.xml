@@ -1,61 +1,49 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              android:orientation="vertical"
-              android:layout_width="match_parent"
-              android:layout_height="match_parent">
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
 
     <EditText
         android:id="@+id/edittextItemName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Item name (Text)"
-        android:inputType="text"
-        android:autofillHints=""
-    />
+        android:hint="@string/hint_item_name"
+        android:inputType="text"/>
 
     <EditText
         android:id="@+id/edittextQuantity"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Quantity (Number)"
-        android:inputType="number"
-        android:autofillHints=""
-    />
+        android:hint="@string/hint_quantity"
+        android:inputType="number"/>
 
     <EditText
         android:id="@+id/edittextUnit"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Unit (Text)"
-        android:inputType="text"
-        android:autofillHints=""
-    />
+        android:hint="@string/hint_unit"
+        android:inputType="text"/>
 
     <EditText
         android:id="@+id/edittextRequireDate"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Require Date (Date)"
-        android:inputType="date"
-        android:autofillHints=""
-    />
+        android:hint="@string/hint_require_date"
+        android:inputType="date"/>
 
     <EditText
         android:id="@+id/edittextLocation"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Location name (Text)"
-        android:inputType="text"
-        android:autofillHints=""
-    />
+        android:hint="@string/hint_location_name"
+        android:inputType="text"/>
 
     <Button
-        android:id="@+id/add_purchase_item_btn"
+        android:id="@+id/buttonAddPurchaseItem"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/save"
-
-    />
-
+        android:text="@string/save"/>
 
 </LinearLayout>
