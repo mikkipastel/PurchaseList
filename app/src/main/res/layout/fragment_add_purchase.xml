@@ -26,19 +26,19 @@
         android:hint="@string/hint_unit"
         android:inputType="text"/>
 
-    <EditText
+    <!--EditText
         android:id="@+id/edittextRequireDate"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="@string/hint_require_date"
-        android:inputType="date"/>
+        android:inputType="date"/-->
 
-    <EditText
+    <!--EditText
         android:id="@+id/edittextLocation"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="@string/hint_location_name"
-        android:inputType="text"/>
+        android:inputType="text"/-->
 
     <Button
         android:id="@+id/buttonAddPurchaseItem"
