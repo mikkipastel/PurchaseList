@@ -6,9 +6,11 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import com.google.firebase.Timestamp
 import com.google.firebase.firestore.DocumentReference
 import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.android.synthetic.main.fragment_add_purchase.*
+import java.util.*
 
 class PurchaseFragment : Fragment() {
     //from this vdo "Adding Data to Cloud Firestore using Kotlin."
@@ -39,10 +41,10 @@ class PurchaseFragment : Fragment() {
         val itemName = edittextItemName.text.toString().trim()
         val quantity = edittextQuantity.text.toString().trim()
         val unit = edittextUnit.text.toString().trim()
-        val requireDate = edittextRequireDate.text.toString().trim()
-        val location = edittextLocation.text.toString().trim()
+        val requireDate = Timestamp(Date()) //edittextRequireDate.text.toString().trim()
+        val location = "BigC" //edittextLocation.text.toString().trim()
 
-        if( (!itemName.isEmpty()) && (!quantity.isEmpty()) && (!unit.isEmpty()) && (!requireDate.isEmpty()) && (!location.isEmpty()) ){
+        if( (!itemName.isEmpty()) && (!quantity.isEmpty()) && (!unit.isEmpty())  && (!location.isEmpty()) ){  //&& (!requireDate.isEmpty())
             try {
                 Toast.makeText(context,"OK", Toast.LENGTH_SHORT).show()
                 val items = HashMap<String, Any>()
