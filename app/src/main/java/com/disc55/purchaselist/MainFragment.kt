@@ -1,6 +1,7 @@
 package com.disc55.purchaselist
 
 import android.os.Bundle
+import android.os.Handler
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -24,6 +25,8 @@ class MainFragment: Fragment(), PurchaseListListener {
 
     private lateinit var mAdapter: PurchaseListAdapter
 
+    private val refreshTime = 10 * 1000
+
     companion object {
         fun newInstant() = MainFragment()
     }
@@ -38,6 +41,15 @@ class MainFragment: Fragment(), PurchaseListListener {
         mFirestore = FirebaseFirestore.getInstance()
 
         setDataAdapter()
+
+        val handler = Handler()
+        val runnable = object : Runnable {
+            override fun run() {
+                setDataAdapter()
+                handler.postDelayed(this, (refreshTime).toLong())
+            }
+        }
+        handler.postDelayed(runnable, (refreshTime).toLong())
 
         btnPurchaseFragment.setOnClickListener {
             fragmentManager!!.beginTransaction()
