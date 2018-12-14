@@ -55,19 +55,21 @@ class PurchaseFragment : Fragment() {
                 items[Constant().textCollectionCloseDate] = ""
 
                 //generate auto ID of item for every items in the collection
-                val reference = database.collection("Locations").document(location).collection("Items")
+                val reference = database.collection("Locations").document(location).collection("Items").document()
+
                 val itemId = reference.id
 
-                reference.document(itemId).set(items).apply {
+                val newReference = database.collection("Locations").document(location).collection("Items").document(itemId)
+
+                newReference.set(items).apply {
                     addOnSuccessListener {
-                        Toast.makeText(context,"Success", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(context, "Success", Toast.LENGTH_SHORT).show()
                         activity?.onBackPressed()
                     }
                     addOnFailureListener {
                         Toast.makeText(context, it.toString(), Toast.LENGTH_LONG).show()
                     }
                 }
-
 
             } catch (e:Exception) {
                 Toast.makeText(context,e.toString(), Toast.LENGTH_LONG).show()
