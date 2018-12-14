@@ -49,7 +49,7 @@ class MainFragment: Fragment(), PurchaseListListener {
         item.clear()
         mFirestore.collection("Users").document("Disc")
             .collection("Locations").document("BigC")
-            .collection("Items")
+            .collection("Items").whereLessThanOrEqualTo("status",1)
             .get()
             .addOnSuccessListener { result ->
                 for (document in result) {
@@ -94,6 +94,8 @@ class MainFragment: Fragment(), PurchaseListListener {
     override fun onItemRemoveClick(position: Int) {
         //TODO: remove item
         mAdapter.changeStatusOpenToDelete(position)
+
+        textDisp.text = position.toString()
     }
 
 }
