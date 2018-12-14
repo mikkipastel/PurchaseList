@@ -27,6 +27,13 @@
         android:layout_margin="16dp"
         android:textAllCaps="false"/>
 
+    <TextView
+        android:text="Show db"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/dispTxt"
+    />
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerView"
         android:layout_width="match_parent"
