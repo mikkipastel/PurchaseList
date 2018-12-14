@@ -4,6 +4,8 @@
     <string name="header_purchase_list">Purchase List</string>
     <string name="save">Save</string>
 
+    <string name="btn_add_new_purchase">Add new purchase</string>
+
     <string name="hint_item_name">Item name (Text)</string>
     <string name="hint_quantity">Quantity (Number)</string>
     <string name="hint_unit">Unit (Text)</string>

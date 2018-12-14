@@ -8,23 +8,9 @@
     android:orientation="vertical"
     tools:context=".MainActivity">
 
-    <!-- Call add new purchase fragment -->
-    <Button
-        android:id="@+id/btnPurchaseFragment"
-        android:text="Add new purchase"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="16dp"
-        android:textAllCaps="false"
-    />
-
-    <!-- Fragment Layout Container -->
     <FrameLayout
         android:id="@+id/container"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-    </FrameLayout>
-
-
+        android:layout_height="wrap_content"/>
 
 </LinearLayout>

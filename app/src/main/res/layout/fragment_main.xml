@@ -4,6 +4,11 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <FrameLayout
+        android:id="@+id/container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -13,6 +18,14 @@
         android:textAlignment="center"
         android:textSize="30sp"
         android:textStyle="bold"/>
+
+    <Button
+        android:id="@+id/btnPurchaseFragment"
+        android:text="@string/btn_add_new_purchase"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:textAllCaps="false"/>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerView"

@@ -57,6 +57,7 @@ class PurchaseFragment : Fragment() {
                 reference.document(itemId).set(items).apply {
                     addOnSuccessListener {
                         Toast.makeText(context,"Success", Toast.LENGTH_SHORT).show()
+                        activity?.onBackPressed()
                     }
                     addOnFailureListener {
                         Toast.makeText(context, it.toString(), Toast.LENGTH_LONG).show()

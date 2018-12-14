@@ -45,6 +45,13 @@ class MainFragment: Fragment(), PurchaseListListener {
             adapter = listAdapter
             onFlingListener = null
         }
+
+        btnPurchaseFragment.setOnClickListener {
+            savedInstanceState ?: fragmentManager!!.beginTransaction()
+                .replace(R.id.container, PurchaseFragment.newInstant())
+                .addToBackStack(null)
+                .commit()
+        }
     }
 
     override fun onItemDoneClick() {
