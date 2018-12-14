@@ -86,62 +86,34 @@ class MainFragment: Fragment(), PurchaseListListener {
         //TODO: done item
         val currentViewHolder = recyclerView.findViewHolderForAdapterPosition(position) as PurchaseListAdapter.ViewHolder
 
-        val items = HashMap<String, Any>()
-        items[Constant().textCollectionItemName] = item[position].itemName
-        items[Constant().textCollectionQuantity] = item[position].quantity
-        items[Constant().textCollectionUnit] = item[position].unit
-        items[Constant().textCollectionRequireDate] = Timestamp(Date())
-        items[Constant().textCollectionCloseDate] = Timestamp(Date())
-
-        if (isClick) {
-            mAdapter.changeStatusOpenToClose(currentViewHolder)
-            items[Constant().textCollectionStatus] = 1
-        } else {
-            mAdapter.changeStatusCloseToOpen(currentViewHolder)
-            items[Constant().textCollectionStatus] = 0
-        }
         textDisp.text = item[position].id
 
         lateinit var database: DocumentReference
         database = FirebaseFirestore.getInstance().document("Users/Disc")
         val newReference = database.collection("Locations").document("BigC").collection("Items").document(item[position].id)
-        newReference.set(items).apply {
-            addOnSuccessListener {
-                Toast.makeText(context, "Success", Toast.LENGTH_SHORT).show()
-                activity?.onBackPressed()
-            }
-            addOnFailureListener {
-                Toast.makeText(context, it.toString(), Toast.LENGTH_LONG).show()
-            }
+
+        if (isClick) {
+            mAdapter.changeStatusOpenToClose(currentViewHolder)
+            newReference.update("status",1)
+        } else {
+            mAdapter.changeStatusCloseToOpen(currentViewHolder)
+            newReference.update("status",0)
         }
 
     }
 
     override fun onItemRemoveClick(position: Int) {
         //TODO: remove item
-        mAdapter.changeStatusOpenToDelete(position)
-        textDisp.text = item[position].id
 
-        val items = HashMap<String, Any>()
-        items[Constant().textCollectionItemName] = item[position].itemName
-        items[Constant().textCollectionQuantity] = item[position].quantity
-        items[Constant().textCollectionUnit] = item[position].unit
-        items[Constant().textCollectionRequireDate] = Timestamp(Date())
-        items[Constant().textCollectionStatus] = 9
-        items[Constant().textCollectionCloseDate] = Timestamp(Date())
+        textDisp.text = item[position].id
 
         lateinit var database: DocumentReference
         database = FirebaseFirestore.getInstance().document("Users/Disc")
         val newReference = database.collection("Locations").document("BigC").collection("Items").document(item[position].id)
-        newReference.set(items).apply {
-            addOnSuccessListener {
-                Toast.makeText(context, "Success", Toast.LENGTH_SHORT).show()
-                activity?.onBackPressed()
-            }
-            addOnFailureListener {
-                Toast.makeText(context, it.toString(), Toast.LENGTH_LONG).show()
-            }
-        }
+        newReference.update("status",9)
+
+        mAdapter.changeStatusOpenToDelete(position)
+
 
     }
 
