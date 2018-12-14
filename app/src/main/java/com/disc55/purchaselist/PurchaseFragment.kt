@@ -42,13 +42,16 @@ class PurchaseFragment : Fragment() {
         val requireDate = edittextRequireDate.text.toString().trim()
         val location = edittextLocation.text.toString().trim()
 
-        if( (!itemName.isEmpty()) && (!quantity.isEmpty()) ){
+        if( (!itemName.isEmpty()) && (!quantity.isEmpty()) && (!unit.isEmpty()) && (!requireDate.isEmpty()) && (!location.isEmpty()) ){
             try {
                 Toast.makeText(context,"OK", Toast.LENGTH_SHORT).show()
                 val items = HashMap<String, Any>()
                 items["itemName"] = itemName
                 items["quantity"] = quantity
                 items["unit"] = unit
+                items["requireDate"] = requireDate
+                items["status"] = 0
+                items["closeDate"] = ""
 
                 //generate auto ID of item for every items in the collection
                 val reference = database.collection("Locations").document(location).collection("Items")
@@ -63,6 +66,10 @@ class PurchaseFragment : Fragment() {
                         Toast.makeText(context, it.toString(), Toast.LENGTH_LONG).show()
                     }
                 }
+
+                edittextItemName.text.clear()
+                edittextQuantity.text.clear()
+                edittextUnit.text.clear()
 
             } catch (e:Exception) {
                 Toast.makeText(context,e.toString(), Toast.LENGTH_LONG).show()

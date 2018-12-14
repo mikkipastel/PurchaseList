@@ -1,9 +1,12 @@
 package com.disc55.purchaselist
 
+import android.content.ContentValues.TAG
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -50,7 +53,7 @@ class MainFragment: Fragment(), PurchaseListListener {
     private fun setDataAdapter() {
         mFirestore.collection("Users").document("Disc")
             .collection("Locations").document("BigC")
-            .collection("Items")
+            .collection("Items").whereEqualTo("status",0)
             .get()
             .addOnSuccessListener { result ->
                 for (document in result) {
@@ -58,7 +61,28 @@ class MainFragment: Fragment(), PurchaseListListener {
                         document.data[textCollectionItemName].toString(),
                         document.data[textCollectionQuantity].toString().toFloat(),
                         document.data[textCollectionUnit].toString(),
-                        document.data[textCollectionStatus].toString(),
+                        document.data[textCollectionStatus].toString().toInt(),
+                        Timestamp(Date()),
+                        Timestamp(Date())
+                    ))
+                }
+            }
+            .addOnFailureListener { exception ->
+                textDisp.text = getString(R.string.failure_get_firestore, exception)
+            }
+
+        mFirestore.collection("Users").document("Disc")
+            .collection("Locations").document("BigC")
+            .collection("Items").whereEqualTo("status",1)
+            .get()
+            .addOnSuccessListener { result ->
+                for (document in result) {
+                    item.add(Purchase(
+                        document.data[textCollectionItemName].toString(),
+                        document.data[textCollectionQuantity].toString().toFloat(),
+                        document.data[textCollectionUnit].toString(),
+                        document.data[textCollectionStatus].toString().toInt(),
+                        Timestamp(Date()),
                         Timestamp(Date())
                     ))
                 }
@@ -79,10 +103,14 @@ class MainFragment: Fragment(), PurchaseListListener {
 
     override fun onItemDoneClick() {
         //TODO: done item
+
+
     }
 
     override fun onItemRemoveClick() {
         //TODO: remove item
+
+
     }
 
 }
