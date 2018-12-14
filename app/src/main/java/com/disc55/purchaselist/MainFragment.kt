@@ -63,8 +63,7 @@ class MainFragment: Fragment(), PurchaseListListener {
                             document.data[Constant().textCollectionUnit].toString(),
                             document.data[Constant().textCollectionStatus].toString().toInt(),
                             Timestamp(Date()),
-                            Timestamp(Date())
-                        )
+                            Timestamp(Date()))
                     )
                 }
 
@@ -83,13 +82,9 @@ class MainFragment: Fragment(), PurchaseListListener {
     }
 
     override fun onItemDoneClick(position: Int, isClick: Boolean) {
-        //TODO: done item
         val currentViewHolder = recyclerView.findViewHolderForAdapterPosition(position) as PurchaseListAdapter.ViewHolder
 
-        textDisp.text = item[position].id
-
-        lateinit var database: DocumentReference
-        database = FirebaseFirestore.getInstance().document("Users/Disc")
+        val database = FirebaseFirestore.getInstance().document("Users/Disc")
         val newReference = database.collection("Locations").document("BigC").collection("Items").document(item[position].id)
 
         if (isClick) {
@@ -103,18 +98,11 @@ class MainFragment: Fragment(), PurchaseListListener {
     }
 
     override fun onItemRemoveClick(position: Int) {
-        //TODO: remove item
-
-        textDisp.text = item[position].id
-
-        lateinit var database: DocumentReference
-        database = FirebaseFirestore.getInstance().document("Users/Disc")
+        val database = FirebaseFirestore.getInstance().document("Users/Disc")
         val newReference = database.collection("Locations").document("BigC").collection("Items").document(item[position].id)
         newReference.update("status",9)
 
         mAdapter.changeStatusOpenToDelete(position)
-
-
     }
 
 }

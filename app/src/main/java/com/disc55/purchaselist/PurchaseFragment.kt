@@ -16,7 +16,7 @@ class PurchaseFragment : Fragment() {
     //from this vdo "Adding Data to Cloud Firestore using Kotlin."
     //https://www.youtube.com/watch?v=yKSuB5COWL4
 
-    private lateinit var database: DocumentReference
+    private lateinit var reference: DocumentReference
 
     companion object {
         fun newInstant() = PurchaseFragment()
@@ -29,7 +29,7 @@ class PurchaseFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        database = FirebaseFirestore.getInstance().document("Users/Disc")
+        reference = FirebaseFirestore.getInstance().document("Users/Disc")
 
         buttonAddPurchaseItem.setOnClickListener {
             saveItemToFireStore()
@@ -55,11 +55,11 @@ class PurchaseFragment : Fragment() {
                 items[Constant().textCollectionCloseDate] = ""
 
                 //generate auto ID of item for every items in the collection
-                val reference = database.collection("Locations").document(location).collection("Items").document()
+                val reference = reference.collection("Locations").document(location).collection("Items").document()
 
                 val itemId = reference.id
 
-                val newReference = database.collection("Locations").document(location).collection("Items").document(itemId)
+                val newReference = this.reference.collection("Locations").document(location).collection("Items").document(itemId)
 
                 newReference.set(items).apply {
                     addOnSuccessListener {
