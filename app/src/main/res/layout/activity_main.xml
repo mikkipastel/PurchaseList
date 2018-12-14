@@ -8,13 +8,6 @@
     android:orientation="vertical"
     tools:context=".MainActivity">
 
-    <TextView
-        android:text="Show db"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/dispTxtTest"
-    />
-
     <FrameLayout
         android:id="@+id/container"
         android:layout_width="match_parent"

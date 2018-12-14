@@ -1,12 +1,9 @@
 package com.disc55.purchaselist
 
-import android.content.ContentValues.TAG
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -19,7 +16,13 @@ import java.util.*
 
 class MainFragment: Fragment(), PurchaseListListener {
 
-    private lateinit var db: FirebaseFirestore
+    private lateinit var mFirestore: FirebaseFirestore
+    private var item = arrayListOf<Purchase>()
+
+    private val textCollectionItemName = "itemName"
+    private val textCollectionQuantity = "quantity"
+    private val textCollectionUnit = "unit"
+    private val textCollectionStatus = "status"
 
     companion object {
         fun newInstant() = MainFragment()
@@ -32,42 +35,45 @@ class MainFragment: Fragment(), PurchaseListListener {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val item = arrayListOf(
-            Purchase("ไข่ไก่", 1.0f, "โหล", "open", Timestamp(Date())),
-            Purchase("ไก่", 1.0f, "Kg", "open", Timestamp(Date()))
-        )
+        mFirestore = FirebaseFirestore.getInstance()
 
-        //TODO: add firestore
-        db = FirebaseFirestore.getInstance()
+        setDataAdapter()
 
-        item.add(Purchase("หมู", 2.0f, "Kg", "open", Timestamp(Date())))
+        btnPurchaseFragment.setOnClickListener {
+            fragmentManager!!.beginTransaction()
+                .replace(R.id.container, PurchaseFragment.newInstant())
+                .addToBackStack(null)
+                .commit()
+        }
+    }
 
-        db.collection("Users").document("Disc")
+    private fun setDataAdapter() {
+        mFirestore.collection("Users").document("Disc")
             .collection("Locations").document("BigC")
             .collection("Items")
             .get()
             .addOnSuccessListener { result ->
                 for (document in result) {
-                    item.add(Purchase(document.data["itemname"].toString(),2.0f,"Kg","open", Timestamp(Date())))
+                    item.add(Purchase(
+                        document.data[textCollectionItemName].toString(),
+                        document.data[textCollectionQuantity].toString().toFloat(),
+                        document.data[textCollectionUnit].toString(),
+                        document.data[textCollectionStatus].toString(),
+                        Timestamp(Date())
+                    ))
                 }
             }
             .addOnFailureListener { exception ->
+                textDisp.text = getString(R.string.failure_get_firestore, exception)
             }
 
         val listAdapter = PurchaseListAdapter(item, this)
 
         recyclerView.apply {
             layoutManager = LinearLayoutManager(context, RecyclerView.VERTICAL, false)
-            isNestedScrollingEnabled = false
+            isNestedScrollingEnabled = true
             adapter = listAdapter
             onFlingListener = null
-        }
-
-        btnPurchaseFragment.setOnClickListener {
-            savedInstanceState ?: fragmentManager!!.beginTransaction()
-                .replace(R.id.container, PurchaseFragment.newInstant())
-                .addToBackStack(null)
-                .commit()
         }
     }
 

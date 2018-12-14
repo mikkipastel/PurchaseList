@@ -46,7 +46,7 @@ class PurchaseFragment : Fragment() {
             try {
                 Toast.makeText(context,"OK", Toast.LENGTH_SHORT).show()
                 val items = HashMap<String, Any>()
-                items["itemname"] = itemName
+                items["itemName"] = itemName
                 items["quantity"] = quantity
                 items["unit"] = unit
 
