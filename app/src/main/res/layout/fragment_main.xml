@@ -21,18 +21,18 @@
 
     <Button
         android:id="@+id/btnPurchaseFragment"
-        android:text="@string/btn_add_new_purchase"
+        android:text="@string/buttonAddNewPurchase"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="16dp"
         android:textAllCaps="false"/>
 
     <TextView
-        android:text="Show db"
+        android:id="@+id/textDisp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/dispTxt"
-    />
+        android:layout_marginBottom="8dp"
+        android:text="@string/text_show_database"/>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerView"
