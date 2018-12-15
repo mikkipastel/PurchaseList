@@ -5,6 +5,17 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="8dp"
+        android:gravity="center"
+        android:text="Add Item"
+        android:textAlignment="center"
+        android:textSize="30sp"
+        android:textStyle="bold"/>
+
     <EditText
         android:id="@+id/edittextItemName"
         android:layout_width="match_parent"

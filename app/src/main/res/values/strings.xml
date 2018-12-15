@@ -1,7 +1,7 @@
 <resources>
-    <string name="app_name">PurchaseList</string>
+    <string name="app_name">DooNote</string>
 
-    <string name="header_purchase_list">Purchase List</string>
+    <string name="header_purchase_list">Shopping List</string>
     <string name="save">Save</string>
 
     <string name="buttonAddNewPurchase">Add Item</string>

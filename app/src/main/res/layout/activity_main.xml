@@ -8,7 +8,7 @@
     tools:context=".MainActivity"
     android:background="@drawable/my_shopping_list"
 
-    android:paddingBottom="25dp" android:paddingTop="70dp" android:paddingLeft="50dp" android:paddingRight="50dp">
+    android:paddingBottom="25dp" android:paddingTop="70dp" android:paddingLeft="60dp" android:paddingRight="60dp">
 
     <FrameLayout
         android:id="@+id/container"

@@ -89,9 +89,9 @@ class MainFragment: Fragment(), PurchaseListListener {
                     onFlingListener = null
                 }
             }
-            .addOnFailureListener { exception ->
+            /*.addOnFailureListener { exception ->
                 textDisp.text = getString(R.string.failure_get_firestore, exception)
-            }
+            }*/
     }
 
     override fun onItemDoneClick(position: Int, isClick: Boolean) {
