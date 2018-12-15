@@ -25,7 +25,7 @@ class MainFragment: Fragment(), PurchaseListListener {
 
     private lateinit var mAdapter: PurchaseListAdapter
 
-    private val refreshTime = 10 * 1000
+    private val refreshTime = 20 * 1000
 
     companion object {
         fun newInstant() = MainFragment()
@@ -50,6 +50,7 @@ class MainFragment: Fragment(), PurchaseListListener {
             }
         }
         handler.postDelayed(runnable, (refreshTime).toLong())
+
 
         btnPurchaseFragment.setOnClickListener {
             fragmentManager!!.beginTransaction()
@@ -100,21 +101,21 @@ class MainFragment: Fragment(), PurchaseListListener {
         val newReference = database.collection("Locations").document("BigC").collection("Items").document(item[position].id)
 
         if (isClick) {
-            mAdapter.changeStatusOpenToClose(currentViewHolder)
+            //mAdapter.changeStatusOpenToClose(currentViewHolder)
             newReference.update("status",1)
         } else {
-            mAdapter.changeStatusCloseToOpen(currentViewHolder)
+            //mAdapter.changeStatusCloseToOpen(currentViewHolder)
             newReference.update("status",0)
         }
-
+        setDataAdapter()
     }
 
     override fun onItemRemoveClick(position: Int) {
         val database = FirebaseFirestore.getInstance().document("Users/Disc")
         val newReference = database.collection("Locations").document("BigC").collection("Items").document(item[position].id)
         newReference.update("status",9)
-
-        mAdapter.changeStatusOpenToDelete(position)
+        //mAdapter.changeStatusOpenToDelete(position)
+        setDataAdapter()
     }
 
 }

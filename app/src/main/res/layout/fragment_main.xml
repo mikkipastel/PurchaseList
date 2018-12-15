@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.core.widget.NestedScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
     android:layout_height="match_parent">
 
     <LinearLayout
@@ -31,8 +31,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="16dp"
-            android:textAllCaps="false"
-            android:background="@color/colorButtonBackgroundSalmon"/>
+            android:background="@color/colorButtonBackgroundSalmon"
+            style="@style/Widget.AppCompat.Button.Colored"
+            android:textAppearance="@style/TextAppearance.AppCompat.Button"/>
 
         <TextView
             android:id="@+id/textDisp"

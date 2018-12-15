@@ -45,7 +45,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="16dp"
-        android:background="@color/colorButtonBackgroundGreen"
+        android:background="@color/colorButtonBackgroundSalmon"
         android:text="@string/save"/>
 
 </LinearLayout>
